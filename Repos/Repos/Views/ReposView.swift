@@ -28,6 +28,14 @@ struct ReposView: View {
                         }
                     }
                 }
+                if model.isLoading {
+                    HStack {
+                        Text("Loading...")
+                        ProgressView()
+                            .foregroundColor(.accentColor)
+                        Spacer()
+                    }
+                }
             }
             .listStyle(.plain)
             .navigationTitle("Trending Repos")

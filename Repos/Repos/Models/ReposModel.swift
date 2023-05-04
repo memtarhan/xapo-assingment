@@ -10,6 +10,7 @@ import SwiftUI
 @MainActor
 class ReposModel: ObservableObject {
     @Published var repos = [RepoDisplayModel]()
+    @Published var isLoading = false
 
     private var currentPage = 0
 
@@ -21,6 +22,8 @@ class ReposModel: ObservableObject {
     }
 
     func load() {
+        isLoading = true
+
         currentPage += 1
         let repoDetails = "https://api.github.com/repos/t3-oss/t3-env"
         let headers = ["Accept": "application/vnd.github.preview"]
@@ -32,6 +35,7 @@ class ReposModel: ObservableObject {
 
         Task {
             do {
+                // TODO: Check response and display alert if needed
                 let (data, response) = try await URLSession.shared.data(for: request)
                 print(data.prettyJSON)
 
@@ -43,8 +47,12 @@ class ReposModel: ObservableObject {
                                                                    forks: "\($0.forksCount)") }
                 repos.append(contentsOf: newItems)
 
+                isLoading = false
+
             } catch {
                 print(error)
+                isLoading = false
+                // TODO: Display error
             }
         }
     }
