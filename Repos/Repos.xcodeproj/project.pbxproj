@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		436335C82A042D71001119FE /* TextModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436335C72A042D71001119FE /* TextModifiers.swift */; };
+		436335CA2A043EDC001119FE /* ReposView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436335C92A043EDC001119FE /* ReposView.swift */; };
 		43B1F6F32A01D0AB00355AA8 /* ReposApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1F6F22A01D0AB00355AA8 /* ReposApp.swift */; };
 		43B1F6F52A01D0AB00355AA8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1F6F42A01D0AB00355AA8 /* ContentView.swift */; };
 		43B1F6F72A01D0AC00355AA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B1F6F62A01D0AC00355AA8 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		436335C72A042D71001119FE /* TextModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifiers.swift; sourceTree = "<group>"; };
+		436335C92A043EDC001119FE /* ReposView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposView.swift; sourceTree = "<group>"; };
 		43B1F6EF2A01D0AB00355AA8 /* Repos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B1F6F22A01D0AB00355AA8 /* ReposApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposApp.swift; sourceTree = "<group>"; };
 		43B1F6F42A01D0AB00355AA8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				43B1F71D2A01D6EC00355AA8 /* OnboardingView.swift */,
+				436335C92A043EDC001119FE /* ReposView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				436335CA2A043EDC001119FE /* ReposView.swift in Sources */,
 				43B1F6F52A01D0AB00355AA8 /* ContentView.swift in Sources */,
 				436335C82A042D71001119FE /* TextModifiers.swift in Sources */,
 				43B1F6F32A01D0AB00355AA8 /* ReposApp.swift in Sources */,
