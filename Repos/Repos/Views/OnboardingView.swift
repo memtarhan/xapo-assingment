@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @State var shouldNavigateToHome = false
+    
     var body: some View {
         // TODO: NavigationView will be deprecated, should use NavigationStack
         ZStack {
@@ -27,7 +29,7 @@ struct OnboardingView: View {
                 Spacer()
 
                 VStack {
-                    MainButton()
+                    MainButton(shouldNavigateToHome: $shouldNavigateToHome)
                     Text("Terms and Privacy")
                         .linkStyle()
                 }
@@ -47,10 +49,12 @@ struct OnboardingView: View {
 }
 
 struct MainButton: View {
+    @Binding var shouldNavigateToHome: Bool
+    
     var body: some View {
         if #available(iOS 15, *) {
             Button {
-                // TODO: Handle navigation
+                shouldNavigateToHome.toggle()
             } label: {
                 Text("Enter the app")
                     .padding([.leading, .trailing], 64)
@@ -60,6 +64,7 @@ struct MainButton: View {
             .foregroundColor(.white)
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.capsule)
+            .fullScreenCover(isPresented: $shouldNavigateToHome, content: ReposView.init)
         } else {
             Button("Enter the app") {
                 // TODO: Handle navigation

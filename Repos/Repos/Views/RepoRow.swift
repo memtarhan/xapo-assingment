@@ -20,6 +20,7 @@ struct RepoRow: View {
                         .foregroundColor(Color.accentColor.opacity(0.7))
                         .frame(width: 24, height: 30)
                     Text(model.title)
+                        .foregroundColor(.primary)
 //                    Spacer()
                 }
                 .font(.headline)
@@ -28,7 +29,11 @@ struct RepoRow: View {
                 HStack {
                     Text(model.createdAt)
                         .font(.footnote)
+                        .foregroundColor(.primary)
+
                     Image(systemName: "calendar")
+                        .foregroundColor(.primary)
+
                 }
 
                 HStack {
@@ -42,6 +47,7 @@ struct RepoRow: View {
                             .frame(width: 24, height: 24)
                         Text("2.5k")
                             .font(.subheadline)
+                            .foregroundColor(.primary)
                     }
 
                     HStack(spacing: 0) {
@@ -52,6 +58,7 @@ struct RepoRow: View {
                             .frame(width: 24, height: 24)
                         Text("2.5k")
                             .font(.subheadline)
+                            .foregroundColor(.primary)
                     }
                 }
             }
