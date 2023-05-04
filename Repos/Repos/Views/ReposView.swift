@@ -8,27 +8,39 @@
 import SwiftUI
 
 struct ReposView: View {
+    @ObservedObject var model = ReposModel()
+
     var body: some View {
         NavigationView {
             List {
-                ForEach(0 ... 100, id: \.self) { index in
+                ForEach(model.repos) { repo in
                     NavigationLink {
                         // Destination
-                        Text("Selected item at #\(index)")
+                        Text("Selected item at #\(repo.id)")
 
                     } label: {
-                        RepoRow()
+                        RepoRow(model: .constant(repo))
                             .padding()
+                    }
+                    .onAppear {
+                        if repo == model.repos.last {
+                            model.load()
+                        }
                     }
                 }
             }
             .listStyle(.plain)
             .navigationTitle("Trending Repos")
         }
+        .onAppear {
+            model.load()
+        }
     }
 }
 
 struct RepoRow: View {
+    @Binding var model: RepoDisplayModel
+
     var body: some View {
         HStack {
             HStack(alignment: .center) {
@@ -37,7 +49,7 @@ struct RepoRow: View {
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(Color.accentColor.opacity(0.7))
                     .frame(width: 24, height: 30)
-                Text("Repo title")
+                Text(model.title)
                     .font(.subheadline)
             }
             HStack {

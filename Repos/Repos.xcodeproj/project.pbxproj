@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		436335C82A042D71001119FE /* TextModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436335C72A042D71001119FE /* TextModifiers.swift */; };
 		436335CA2A043EDC001119FE /* ReposView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436335C92A043EDC001119FE /* ReposView.swift */; };
+		436335CD2A04481B001119FE /* ReposModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436335CC2A04481B001119FE /* ReposModel.swift */; };
 		43B1F6F32A01D0AB00355AA8 /* ReposApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1F6F22A01D0AB00355AA8 /* ReposApp.swift */; };
 		43B1F6F52A01D0AB00355AA8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1F6F42A01D0AB00355AA8 /* ContentView.swift */; };
 		43B1F6F72A01D0AC00355AA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B1F6F62A01D0AC00355AA8 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		436335C72A042D71001119FE /* TextModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifiers.swift; sourceTree = "<group>"; };
 		436335C92A043EDC001119FE /* ReposView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposView.swift; sourceTree = "<group>"; };
+		436335CC2A04481B001119FE /* ReposModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposModel.swift; sourceTree = "<group>"; };
 		43B1F6EF2A01D0AB00355AA8 /* Repos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B1F6F22A01D0AB00355AA8 /* ReposApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposApp.swift; sourceTree = "<group>"; };
 		43B1F6F42A01D0AB00355AA8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
+		436335CB2A04480C001119FE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				436335CC2A04481B001119FE /* ReposModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		43B1F6E62A01D0AB00355AA8 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +118,7 @@
 		43B1F6F12A01D0AB00355AA8 /* Repos */ = {
 			isa = PBXGroup;
 			children = (
+				436335CB2A04480C001119FE /* Models */,
 				436335C62A042D5D001119FE /* Modifiers */,
 				43B1F71C2A01D6D300355AA8 /* Views */,
 				43B1F6F22A01D0AB00355AA8 /* ReposApp.swift */,
@@ -287,6 +298,7 @@
 				436335C82A042D71001119FE /* TextModifiers.swift in Sources */,
 				43B1F6F32A01D0AB00355AA8 /* ReposApp.swift in Sources */,
 				43B1F71E2A01D6EC00355AA8 /* OnboardingView.swift in Sources */,
+				436335CD2A04481B001119FE /* ReposModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
