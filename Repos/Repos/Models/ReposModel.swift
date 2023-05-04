@@ -15,7 +15,12 @@ class ReposModel: ObservableObject {
     private var currentPage = 0
 
     private var decoder: JSONDecoder {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.keyDecodingStrategy = .convertFromSnakeCase
 
         return decoder
@@ -41,10 +46,12 @@ class ReposModel: ObservableObject {
 
                 let result = try decoder.decode(Response.self, from: data)
                 let newItems = result.items.map { RepoDisplayModel(id: $0.id,
-                                                                   title: $0.fullName,
+                                                                   title: $0.name,
                                                                    stars: "\($0.stargazersCount)",
                                                                    watchers: "\($0.watchersCount)",
-                                                                   forks: "\($0.forksCount)") }
+                                                                   forks: "\($0.forksCount)",
+                                                                   createdAt: $0.createdAt.displayable)
+                }
                 repos.append(contentsOf: newItems)
 
                 isLoading = false
@@ -74,10 +81,11 @@ struct Response: Decodable {
 
 struct ItemResponse: Decodable {
     let id: Int
-    let fullName: String
+    let name: String
     let stargazersCount: Int
     let watchersCount: Int
     let forksCount: Int
+    let createdAt: Date
 }
 
 struct RepoDisplayModel: Identifiable, Equatable {
@@ -86,8 +94,19 @@ struct RepoDisplayModel: Identifiable, Equatable {
     let stars: String
     let watchers: String
     let forks: String
+    let createdAt: String
 
     static func == (lhs: RepoDisplayModel, rhs: RepoDisplayModel) -> Bool {
         return lhs.id == rhs.id
+    }
+
+    static var sample = RepoDisplayModel(id: 1000000, title: "Sample Repo", stars: "4.5k", watchers: "1.2k", forks: "500", createdAt: "2023-05-05")
+}
+
+extension Date {
+    var displayable: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, hh:mm"
+        return dateFormatter.string(from: self)
     }
 }

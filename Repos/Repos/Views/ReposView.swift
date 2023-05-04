@@ -15,12 +15,12 @@ struct ReposView: View {
             List {
                 ForEach(model.repos) { repo in
                     NavigationLink {
-                        // Destination
-                        Text("Selected item at #\(repo.id)")
+                        RepoDetailView(repo: .constant(repo))
 
                     } label: {
                         RepoRow(model: .constant(repo))
                             .padding()
+//                            .cardStyle()
                     }
                     .onAppear {
                         if repo == model.repos.last {
@@ -42,47 +42,6 @@ struct ReposView: View {
         }
         .onAppear {
             model.load()
-        }
-    }
-}
-
-struct RepoRow: View {
-    @Binding var model: RepoDisplayModel
-
-    var body: some View {
-        HStack {
-            HStack(alignment: .center) {
-                Image("repo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(Color.accentColor.opacity(0.7))
-                    .frame(width: 24, height: 30)
-                Text(model.title)
-                    .font(.subheadline)
-            }
-            HStack {
-                Spacer()
-
-                HStack(spacing: 0) {
-                    Image("fork")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundColor(Color.accentColor.opacity(0.7))
-                        .frame(width: 24, height: 24)
-                    Text("2.5k")
-                        .font(.headline)
-                }
-
-                HStack(spacing: 0) {
-                    Image("star")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundColor(Color.accentColor.opacity(0.7))
-                        .frame(width: 24, height: 24)
-                    Text("2.5k")
-                        .font(.headline)
-                }
-            }
         }
     }
 }

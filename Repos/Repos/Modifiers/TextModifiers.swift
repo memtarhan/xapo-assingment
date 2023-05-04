@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - Large Title Modifier
+// MARK: - Large Title
 
 struct LargeTitle: ViewModifier {
     func body(content: Content) -> some View {
@@ -19,6 +19,8 @@ struct LargeTitle: ViewModifier {
     }
 }
 
+// MARK: - Headline
+
 struct Headline: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -27,6 +29,8 @@ struct Headline: ViewModifier {
             .padding(8)
     }
 }
+
+// MARK: - Link
 
 // TODO: Add link navigation
 
