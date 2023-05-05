@@ -16,10 +16,10 @@ extension Int {
             return "\(self)"
 
         } else if self < 1000000 {
-            return String(format: "%.2fk", Double(self) / 1000)
+            return String(format: "%.1fk", Double(self) / 1000)
 
         } else {
-            return String(format: "%.2fm", Double(self) / 1000000)
+            return String(format: "%.1fm", Double(self) / 1000000)
         }
     }
 }

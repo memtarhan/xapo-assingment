@@ -1,21 +1,18 @@
 //
-//  ReposService.swift
-//  Repos
+//  StubReposService.swift
+//  ReposTests
 //
 //  Created by Mehmet Tarhan on 05/05/2023.
 //
 
 import Foundation
+@testable import Repos
 
-protocol ReposService: HTTPWrapper {
-    func fetchRepos(atPage page: Int) async throws -> [RepoResponse]
-}
-
-class ReposServiceImplemented: ReposService {
-    // TODO: Can also move baseURL to HTTPWrapper
+class StubReposService: ReposService {
+    // TODO: We can get mocking url, staging, etc.
     private let baseURL = "https://api.github.com/search/repositories"
 
-    // MARK: Can filter data with dateQuery i.e monthly, weekly, yearly etc.
+    // MARK: We can insert any data query
 
     private lazy var dateQuery: String = {
         let date = Calendar.current.date(byAdding: .month, value: -1, to: Date())
