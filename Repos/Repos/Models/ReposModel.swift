@@ -41,21 +41,24 @@ class ReposModel: ObservableObject {
         Task {
             do {
                 // TODO: Check response and display alert if needed
+                // TODO: Implement count description, i.e 1200 -> 1.2k
                 let (data, response) = try await URLSession.shared.data(for: request)
                 print(data.prettyJSON)
 
                 let result = try decoder.decode(ReposResponse.self, from: data)
                 let newItems = result.items.map { RepoDisplayModel(id: $0.id,
-                                                                   name: $0.name,
-                                                                   fullName: $0.fullName,
-                                                                   url: URL(string: $0.htmlUrl)!,
-                                                                   description: $0.description,
-                                                                   stars: "\($0.stargazersCount)",
-                                                                   watchers: "\($0.watchersCount)",
-                                                                   forks: "\($0.forksCount)",
-                                                                   createdAt: $0.createdAt.displayable,
-                                                                   updatedAt: $0.updatedAt.displayable,
-                                                                   pushedAt: $0.pushedAt.displayable,
+                                                                   details: RepoDetailsDisplayModel(name: $0.name,
+                                                                                                    fullName: $0.fullName,
+                                                                                                    url: URL(string: $0.htmlUrl)!,
+                                                                                                    description: $0.description,
+                                                                                                    createdAt: $0.createdAt.displayable,
+                                                                                                    updatedAt: $0.updatedAt.displayable,
+                                                                                                    pushedAt: $0.pushedAt.displayable),
+                                                                   stats: [
+                                                                       RepoStatsDisplayModel(title: "Watchers", imageName: "eye", value: "\($0.watchersCount)"),
+                                                                       RepoStatsDisplayModel(title: "Forks", imageName: "tuningfork", value: "\($0.forksCount)"),
+                                                                       RepoStatsDisplayModel(title: "Stars", imageName: "star", value: "\($0.stargazersCount)"),
+                                                                   ],
                                                                    owner: RepoOwnerDisplayModel(avatarUrl: $0.owner.avatarUrl,
                                                                                                 username: $0.owner.login,
                                                                                                 profileURL: URL(string: "https://github.com/\($0.owner.login)")!))
@@ -109,16 +112,8 @@ struct RepoOwnerResponse: Decodable {
 
 struct RepoDisplayModel: Identifiable, Equatable {
     let id: Int
-    let name: String
-    let fullName: String
-    let url: URL
-    let description: String?
-    let stars: String
-    let watchers: String
-    let forks: String
-    let createdAt: String
-    let updatedAt: String
-    let pushedAt: String
+    let details: RepoDetailsDisplayModel
+    let stats: [RepoStatsDisplayModel]
     let owner: RepoOwnerDisplayModel
 
     static func == (lhs: RepoDisplayModel, rhs: RepoDisplayModel) -> Bool {
@@ -126,17 +121,27 @@ struct RepoDisplayModel: Identifiable, Equatable {
     }
 
     static let sample = RepoDisplayModel(id: 1000000,
-                                         name: "Sample",
-                                         fullName: "Sample Repo",
-                                         url: URL(string: "https://github.com/memtarhan/ios-lab")!,
-                                         description: "This is just a sample",
-                                         stars: "4.5k",
-                                         watchers: "1.2k",
-                                         forks: "500",
-                                         createdAt: Date().displayable,
-                                         updatedAt: Date().displayable,
-                                         pushedAt: Date().displayable,
+                                         details: RepoDetailsDisplayModel.sample,
+                                         stats: [RepoStatsDisplayModel.sample],
                                          owner: RepoOwnerDisplayModel.sample)
+}
+
+struct RepoDetailsDisplayModel {
+    let name: String
+    let fullName: String
+    let url: URL
+    let description: String?
+    let createdAt: String
+    let updatedAt: String
+    let pushedAt: String
+
+    static let sample = RepoDetailsDisplayModel(name: "Sample",
+                                                fullName: "Sample Repo",
+                                                url: URL(string: "https://github.com/memtarhan/ios-lab")!,
+                                                description: "This is just a sample",
+                                                createdAt: Date().displayable,
+                                                updatedAt: Date().displayable,
+                                                pushedAt: Date().displayable)
 }
 
 struct RepoOwnerDisplayModel {
@@ -147,6 +152,15 @@ struct RepoOwnerDisplayModel {
     static let sample = RepoOwnerDisplayModel(avatarUrl: "https://avatars.githubusercontent.com/u/32220126?v=4",
                                               username: "memtarhan",
                                               profileURL: URL(string: "https://github.com/memtarhan")!)
+}
+
+struct RepoStatsDisplayModel: Identifiable {
+    let id = UUID()
+    let title: String
+    let imageName: String
+    let value: String
+
+    static let sample = RepoStatsDisplayModel(title: "Forks", imageName: "tuningfork", value: "1.2k")
 }
 
 extension Date {
