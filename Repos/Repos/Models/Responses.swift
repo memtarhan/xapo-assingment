@@ -7,11 +7,13 @@
 
 import Foundation
 
-struct ReposResponse: Decodable {
+protocol APIResponse: Decodable { }
+
+struct ReposResponse: APIResponse {
     let items: [RepoResponse]
 }
 
-struct RepoResponse: Decodable {
+struct RepoResponse: APIResponse {
     let id: Int
     let name: String
     let fullName: String
@@ -26,7 +28,7 @@ struct RepoResponse: Decodable {
     let owner: RepoOwnerResponse
 }
 
-struct RepoOwnerResponse: Decodable {
+struct RepoOwnerResponse: APIResponse {
     let avatarUrl: String
     let login: String
 }

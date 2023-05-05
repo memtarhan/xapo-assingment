@@ -15,12 +15,12 @@ class ReposServiceImplemented: ReposService {
     // TODO: Can also move baseURL to HTTPWrapper
     private let baseURL = "https://api.github.com/search/repositories"
 
-    // MARK: Can filter data with dateQuery i.e monthly, weekly, etc.
+    // MARK: Can filter data with dateQuery i.e monthly, weekly, yearly etc.
 
     private lazy var dateQuery: String = {
-        let date = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+        let date = Calendar.current.date(byAdding: .month, value: -1, to: Date())
         // TODO: We can also throw error here if date is not valid
-        return "created%3A%3E\(date?.inQueryFormat ?? "2023-05-01")"
+        return "created%3A%3E\(date!.inQueryFormat)"
     }()
 
     func fetchRepos(atPage page: Int) async throws -> [RepoResponse] {
@@ -32,17 +32,7 @@ class ReposServiceImplemented: ReposService {
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = headers
 
-        let (data, response) = try await URLSession.shared.data(for: request)
-        if let prettyJSON = data.prettyJSON {
-            print(prettyJSON)
-        }
-
-        guard let httpResponse = (response as? HTTPURLResponse),
-              httpResponse.statusCode == 200 else {
-            throw HTTPError.invalidData // Or another error
-        }
-
-        let result = try decoder.decode(ReposResponse.self, from: data)
+        let result: ReposResponse = try await handleDataTask(for: request)
         return result.items
     }
 }

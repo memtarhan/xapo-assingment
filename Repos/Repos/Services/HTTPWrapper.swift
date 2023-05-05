@@ -7,12 +7,14 @@
 
 import Foundation
 
-protocol HTTPWrapper {
-    var decoder: JSONDecoder { get }
-}
+protocol HTTPWrapper { }
 
 extension HTTPWrapper {
-    var decoder: JSONDecoder {
+    private var session: URLSession {
+        URLSession.shared
+    }
+    
+    private var decoder: JSONDecoder {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -22,5 +24,18 @@ extension HTTPWrapper {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
 
         return decoder
+    }
+
+    func handleDataTask<T: APIResponse>(for urlRequest: URLRequest) async throws -> T {
+        let (data, response) = try await session.data(for: urlRequest)
+        if let prettyJSON = data.prettyJSON {
+            print(prettyJSON)
+        }
+        guard let httpResponse = (response as? HTTPURLResponse),
+              httpResponse.statusCode == 200 else {
+            throw HTTPError.invalidData // Or another error
+        }
+        
+        return try decoder.decode(T.self, from: data)
     }
 }

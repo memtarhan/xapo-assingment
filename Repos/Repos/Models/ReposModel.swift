@@ -55,9 +55,9 @@ private extension ReposModel {
                                                                       updatedAt: $0.updatedAt.displayable,
                                                                       pushedAt: $0.pushedAt.displayable),
                                      stats: [
-                                         RepoStatsDisplayModel(title: "Watchers", imageName: "eye", value: "\($0.watchersCount)"),
-                                         RepoStatsDisplayModel(title: "Forks", imageName: "tuningfork", value: "\($0.forksCount)"),
-                                         RepoStatsDisplayModel(title: "Stars", imageName: "star", value: "\($0.stargazersCount)"),
+                                         RepoStatsDisplayModel(title: "Watchers", imageName: "eye", value: $0.watchersCount.asCountDescription),
+                                         RepoStatsDisplayModel(title: "Forks", imageName: "tuningfork", value: $0.forksCount.asCountDescription),
+                                         RepoStatsDisplayModel(title: "Stars", imageName: "star", value: $0.stargazersCount.asCountDescription),
                                      ],
                                      owner: RepoOwnerDisplayModel(avatarUrl: $0.owner.avatarUrl,
                                                                   username: $0.owner.login,

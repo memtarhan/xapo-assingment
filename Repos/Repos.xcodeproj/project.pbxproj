@@ -18,6 +18,7 @@
 		43041F4B2A0532E9000D1F87 /* ReposService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F4A2A0532E9000D1F87 /* ReposService.swift */; };
 		43041F4D2A053357000D1F87 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F4C2A053357000D1F87 /* HTTPError.swift */; };
 		43041F4F2A053546000D1F87 /* HTTPWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F4E2A053546000D1F87 /* HTTPWrapper.swift */; };
+		43041F512A054822000D1F87 /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F502A054822000D1F87 /* Int+.swift */; };
 		433800912A05155D004F0DC0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800902A05155D004F0DC0 /* WebViewController.swift */; };
 		433800932A0516A9004F0DC0 /* WebViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800922A0516A9004F0DC0 /* WebViewControllerRepresentable.swift */; };
 		433800952A0516C0004F0DC0 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800942A0516C0004F0DC0 /* WebView.swift */; };
@@ -71,6 +72,7 @@
 		43041F4A2A0532E9000D1F87 /* ReposService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposService.swift; sourceTree = "<group>"; };
 		43041F4C2A053357000D1F87 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		43041F4E2A053546000D1F87 /* HTTPWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPWrapper.swift; sourceTree = "<group>"; };
+		43041F502A054822000D1F87 /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		433800902A05155D004F0DC0 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		433800922A0516A9004F0DC0 /* WebViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		433800942A0516C0004F0DC0 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				43041F452A0532B2000D1F87 /* Data+.swift */,
 				43041F472A0532C4000D1F87 /* Date+.swift */,
+				43041F502A054822000D1F87 /* Int+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				436335C82A042D71001119FE /* TextModifiers.swift in Sources */,
 				436335D12A045EA0001119FE /* ViewModifiers.swift in Sources */,
 				433800A72A052676004F0DC0 /* DescriptionSection.swift in Sources */,
+				43041F512A054822000D1F87 /* Int+.swift in Sources */,
 				43041F3B2A052CF5000D1F87 /* AdaptiveStack.swift in Sources */,
 				43041F3F2A053238000D1F87 /* DisplayModels.swift in Sources */,
 				433800A52A05263B004F0DC0 /* DetailsSection.swift in Sources */,
