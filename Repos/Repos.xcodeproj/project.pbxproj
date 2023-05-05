@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		43041F392A052B82000D1F87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F382A052B82000D1F87 /* AppDelegate.swift */; };
+		43041F3B2A052CF5000D1F87 /* AdaptiveStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F3A2A052CF5000D1F87 /* AdaptiveStack.swift */; };
+		43041F3D2A05304D000D1F87 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F3C2A05304D000D1F87 /* MainButton.swift */; };
 		433800912A05155D004F0DC0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800902A05155D004F0DC0 /* WebViewController.swift */; };
 		433800932A0516A9004F0DC0 /* WebViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800922A0516A9004F0DC0 /* WebViewControllerRepresentable.swift */; };
 		433800952A0516C0004F0DC0 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800942A0516C0004F0DC0 /* WebView.swift */; };
@@ -52,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		43041F382A052B82000D1F87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		43041F3A2A052CF5000D1F87 /* AdaptiveStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveStack.swift; sourceTree = "<group>"; };
+		43041F3C2A05304D000D1F87 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		433800902A05155D004F0DC0 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		433800922A0516A9004F0DC0 /* WebViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		433800942A0516C0004F0DC0 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 			children = (
 				4338009C2A051C56004F0DC0 /* Image+.swift */,
 				4338009E2A052266004F0DC0 /* DetailIconImage.swift */,
+				43041F3A2A052CF5000D1F87 /* AdaptiveStack.swift */,
+				43041F3C2A05304D000D1F87 /* MainButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -374,6 +380,7 @@
 			files = (
 				433800972A051773004F0DC0 /* WebContainerView.swift in Sources */,
 				433800A32A05260B004F0DC0 /* StatsSection.swift in Sources */,
+				43041F3D2A05304D000D1F87 /* MainButton.swift in Sources */,
 				43041F392A052B82000D1F87 /* AppDelegate.swift in Sources */,
 				436335CA2A043EDC001119FE /* ReposView.swift in Sources */,
 				436335D32A0460F2001119FE /* RepoRow.swift in Sources */,
@@ -382,6 +389,7 @@
 				436335C82A042D71001119FE /* TextModifiers.swift in Sources */,
 				436335D12A045EA0001119FE /* ViewModifiers.swift in Sources */,
 				433800A72A052676004F0DC0 /* DescriptionSection.swift in Sources */,
+				43041F3B2A052CF5000D1F87 /* AdaptiveStack.swift in Sources */,
 				433800A52A05263B004F0DC0 /* DetailsSection.swift in Sources */,
 				4338009D2A051C56004F0DC0 /* Image+.swift in Sources */,
 				43B1F6F32A01D0AB00355AA8 /* ReposApp.swift in Sources */,
