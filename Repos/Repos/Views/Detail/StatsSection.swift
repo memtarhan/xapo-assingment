@@ -13,31 +13,33 @@ struct StatsSection: View {
     var body: some View {
         if #available(iOS 15, *) {
             Section("Stats") {
-                ForEach(stats) { stat in
-                    HStack {
-                        DetailIconImage(imageName: stat.imageName)
-                        Text(stat.title)
-                            .font(.footnote)
-                        Spacer()
-                        Text(stat.value)
-                            .font(.headline)
-                    }
-                    .foregroundColor(.primary)
-                }
+                StatsView(stats: stats)
             }
 
         } else {
-            ForEach(stats) { stat in
-                HStack {
-                    DetailIconImage(imageName: stat.imageName)
+            StatsView(stats: stats)
+        }
+    }
+}
+
+struct StatsView: View {
+    var stats: [RepoStatsDisplayModel]
+    var simpleVersion = false
+
+    var body: some View {
+        ForEach(stats) { stat in
+            HStack {
+                DetailIconImage(imageName: stat.imageName)
+                if !simpleVersion {
                     Text(stat.title)
                         .font(.footnote)
                     Spacer()
-                    Text(stat.value)
-                        .font(.headline)
                 }
-                .foregroundColor(.primary)
+
+                Text(stat.value)
+                    .font(.headline)
             }
+            .foregroundColor(.primary)
         }
     }
 }

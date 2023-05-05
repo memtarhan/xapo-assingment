@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct RepoDetailView: View {
-    @Binding var repo: RepoDisplayModel
+    // No need to bind ´repo´ variable here, because we won´t update its data
+    var repo: RepoDisplayModel
 
     var body: some View {
         List {
@@ -25,6 +26,6 @@ struct RepoDetailView: View {
 
 struct RepoDetailSubview_Previews: PreviewProvider {
     static var previews: some View {
-        RepoDetailView(repo: .constant(RepoDisplayModel.sample))
+        RepoDetailView(repo: RepoDisplayModel.sample)
     }
 }

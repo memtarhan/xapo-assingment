@@ -12,9 +12,9 @@ import SwiftUI
 struct Card: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .background(Color.primary.opacity(0.6))
+            .background(Color("GrayBackgroundColor"))
             .cornerRadius(20)
-            .shadow(color: Color.gray.opacity(0.2), radius: 4)
+            .shadow(color: Color.black.opacity(0.2), radius: 1)
     }
 }
 

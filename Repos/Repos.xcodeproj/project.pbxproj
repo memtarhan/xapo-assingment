@@ -23,6 +23,8 @@
 		43041F572A054BD2000D1F87 /* ReposServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F562A054BD2000D1F87 /* ReposServiceTests.swift */; };
 		43041F5A2A054CC0000D1F87 /* CountDescriptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F592A054CC0000D1F87 /* CountDescriptionTests.swift */; };
 		43041F5C2A054E9E000D1F87 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F5B2A054E9E000D1F87 /* DateTests.swift */; };
+		43041F5E2A056654000D1F87 /* FeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F5D2A056654000D1F87 /* FeaturedView.swift */; };
+		43041F602A056F9A000D1F87 /* GeometryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F5F2A056F9A000D1F87 /* GeometryReader.swift */; };
 		433800912A05155D004F0DC0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800902A05155D004F0DC0 /* WebViewController.swift */; };
 		433800932A0516A9004F0DC0 /* WebViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800922A0516A9004F0DC0 /* WebViewControllerRepresentable.swift */; };
 		433800952A0516C0004F0DC0 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800942A0516C0004F0DC0 /* WebView.swift */; };
@@ -81,6 +83,8 @@
 		43041F562A054BD2000D1F87 /* ReposServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposServiceTests.swift; sourceTree = "<group>"; };
 		43041F592A054CC0000D1F87 /* CountDescriptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDescriptionTests.swift; sourceTree = "<group>"; };
 		43041F5B2A054E9E000D1F87 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
+		43041F5D2A056654000D1F87 /* FeaturedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedView.swift; sourceTree = "<group>"; };
+		43041F5F2A056F9A000D1F87 /* GeometryReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryReader.swift; sourceTree = "<group>"; };
 		433800902A05155D004F0DC0 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		433800922A0516A9004F0DC0 /* WebViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		433800942A0516C0004F0DC0 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 			children = (
 				436335D22A0460F2001119FE /* RepoRow.swift */,
 				436335C92A043EDC001119FE /* ReposView.swift */,
+				43041F5D2A056654000D1F87 /* FeaturedView.swift */,
 			);
 			path = Repos;
 			sourceTree = "<group>";
@@ -217,14 +222,15 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
-		4338009B2A051C4A004F0DC0 /* Custom */ = {
+		4338009B2A051C4A004F0DC0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				4338009E2A052266004F0DC0 /* DetailIconImage.swift */,
 				43041F3A2A052CF5000D1F87 /* AdaptiveStack.swift */,
 				43041F3C2A05304D000D1F87 /* MainButton.swift */,
+				43041F5F2A056F9A000D1F87 /* GeometryReader.swift */,
 			);
-			path = Custom;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		436335C62A042D5D001119FE /* Modifiers */ = {
@@ -315,7 +321,7 @@
 		43B1F71C2A01D6D300355AA8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4338009B2A051C4A004F0DC0 /* Custom */,
+				4338009B2A051C4A004F0DC0 /* Common */,
 				4338009A2A051A4C004F0DC0 /* Detail */,
 				433800982A051A34004F0DC0 /* Onboarding */,
 				433800992A051A3B004F0DC0 /* Repos */,
@@ -464,6 +470,7 @@
 				43041F482A0532C4000D1F87 /* Date+.swift in Sources */,
 				436335CA2A043EDC001119FE /* ReposView.swift in Sources */,
 				436335D32A0460F2001119FE /* RepoRow.swift in Sources */,
+				43041F5E2A056654000D1F87 /* FeaturedView.swift in Sources */,
 				43041F4D2A053357000D1F87 /* HTTPError.swift in Sources */,
 				433800A12A0525A3004F0DC0 /* OwnerSection.swift in Sources */,
 				43041F4B2A0532E9000D1F87 /* ReposService.swift in Sources */,
@@ -478,6 +485,7 @@
 				433800A52A05263B004F0DC0 /* DetailsSection.swift in Sources */,
 				43B1F6F32A01D0AB00355AA8 /* ReposApp.swift in Sources */,
 				43B1F71E2A01D6EC00355AA8 /* OnboardingView.swift in Sources */,
+				43041F602A056F9A000D1F87 /* GeometryReader.swift in Sources */,
 				4338009F2A052266004F0DC0 /* DetailIconImage.swift in Sources */,
 				433800932A0516A9004F0DC0 /* WebViewControllerRepresentable.swift in Sources */,
 				433800952A0516C0004F0DC0 /* WebView.swift in Sources */,

@@ -10,6 +10,8 @@ import SwiftUI
 @MainActor
 class ReposModel: ObservableObject {
     @Published var repos = [RepoDisplayModel]()
+    @Published var featuredRepos = [RepoDisplayModel]()
+
     @Published var isLoading = false
     @Published var errorMessage: String? = nil
 
@@ -23,6 +25,7 @@ class ReposModel: ObservableObject {
 
     func refresh(_ filter: TrendingFilter) {
         repos.removeAll()
+        featuredRepos.removeAll()
         currentPage = 0
         load(filter)
     }
@@ -36,6 +39,12 @@ class ReposModel: ObservableObject {
             do {
                 let items = try await service.fetchRepos(atPage: currentPage, filter: filter)
                 repos.append(contentsOf: createDisplayModels(outOfItems: items))
+
+                // If it's first page, we'll have first 5 items as 'Featured'
+
+                if currentPage == 1 {
+                    featuredRepos.append(contentsOf: repos.prefix(upTo: 5))
+                }
 
                 isLoading = false
 
