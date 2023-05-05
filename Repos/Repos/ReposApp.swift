@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct ReposApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
+    init() {
+        print("ReposApp initialized")
+
+        // MARK: This is the first point, you can register UserDefaults, RemoteConfig, etc.
+        // MARK: Use AppDelegate if necessary
+    }
+
     var body: some Scene {
         WindowGroup {
-            ReposView()
+            OnboardingView()
         }
     }
 }

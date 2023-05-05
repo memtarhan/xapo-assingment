@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43041F392A052B82000D1F87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43041F382A052B82000D1F87 /* AppDelegate.swift */; };
 		433800912A05155D004F0DC0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800902A05155D004F0DC0 /* WebViewController.swift */; };
 		433800932A0516A9004F0DC0 /* WebViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800922A0516A9004F0DC0 /* WebViewControllerRepresentable.swift */; };
 		433800952A0516C0004F0DC0 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800942A0516C0004F0DC0 /* WebView.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43041F382A052B82000D1F87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		433800902A05155D004F0DC0 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		433800922A0516A9004F0DC0 /* WebViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		433800942A0516C0004F0DC0 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				436335C62A042D5D001119FE /* Modifiers */,
 				43B1F71C2A01D6D300355AA8 /* Views */,
 				43B1F6F22A01D0AB00355AA8 /* ReposApp.swift */,
+				43041F382A052B82000D1F87 /* AppDelegate.swift */,
 				43B1F6F62A01D0AC00355AA8 /* Assets.xcassets */,
 				43B1F6F82A01D0AC00355AA8 /* Preview Content */,
 			);
@@ -371,6 +374,7 @@
 			files = (
 				433800972A051773004F0DC0 /* WebContainerView.swift in Sources */,
 				433800A32A05260B004F0DC0 /* StatsSection.swift in Sources */,
+				43041F392A052B82000D1F87 /* AppDelegate.swift in Sources */,
 				436335CA2A043EDC001119FE /* ReposView.swift in Sources */,
 				436335D32A0460F2001119FE /* RepoRow.swift in Sources */,
 				433800A12A0525A3004F0DC0 /* OwnerSection.swift in Sources */,
