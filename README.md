@@ -1,4 +1,4 @@
-# Trendy
+# GitHub Trending Repos
 ###### Trending repos on GitHub
 ###### iOS 14 and later
 
