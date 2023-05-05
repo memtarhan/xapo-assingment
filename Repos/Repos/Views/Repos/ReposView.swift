@@ -18,38 +18,64 @@ struct ReposView: View {
                     .padding()
 
             } else {
-                List {
-                    ForEach(model.repos) { repo in
-                        NavigationLink {
-                            RepoDetailView(repo: .constant(repo))
-
-                        } label: {
-                            RepoRow(model: .constant(repo))
-                                .padding()
-                            //                            .cardStyle()
+                if #available(iOS 15, *) {
+                    ReposList(model: .constant(model))
+                        .refreshable {
+                            model.refresh()
                         }
-                        .onAppear {
-                            if repo == model.repos.last {
-                                model.load()
+
+                } else {
+                    // TODO: Add pull to refresh for iOS 14, refreshable is available for iOS15 and later
+                    ReposList(model: .constant(model))
+                        .toolbar {
+                            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                                Button {
+                                    model.refresh()
+                                } label: {
+                                    Image(systemName: "arrow.clockwise")
+                                }
                             }
                         }
-                    }
-                    if model.isLoading {
-                        HStack {
-                            Text("Loading...")
-                            ProgressView()
-                                .foregroundColor(.accentColor)
-                            Spacer()
-                        }
-                    }
                 }
-                .listStyle(.plain)
-                .navigationTitle("Trending Repos")
             }
         }
         .onAppear {
             model.load()
         }
+    }
+}
+
+struct ReposList: View {
+    @Binding var model: ReposModel
+
+    var body: some View {
+        List {
+            ForEach(model.repos) { repo in
+                NavigationLink {
+                    RepoDetailView(repo: .constant(repo))
+
+                } label: {
+                    RepoRow(model: .constant(repo))
+                        .padding()
+                    //                            .cardStyle()
+                }
+                .onAppear {
+                    if repo == model.repos.last {
+                        model.load()
+                    }
+                }
+            }
+            if model.isLoading {
+                HStack {
+                    Text("Loading...")
+                    ProgressView()
+                        .foregroundColor(.accentColor)
+                    Spacer()
+                }
+            }
+        }
+        .listStyle(.plain)
+        .navigationTitle("Trending Repos")
     }
 }
 

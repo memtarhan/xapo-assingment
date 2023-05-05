@@ -21,6 +21,12 @@ class ReposModel: ObservableObject {
         service = ReposServiceImplemented()
     }
 
+    func refresh() {
+        repos.removeAll()
+        currentPage = 0
+        load()
+    }
+
     func load() {
         isLoading = true
 
