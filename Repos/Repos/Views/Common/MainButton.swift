@@ -33,7 +33,7 @@ private struct MainButtonCore: View {
             shouldNavigateToHome.toggle()
         } label: {
             Text(title)
-                .padding([.leading, .trailing], 32)
+                .padding([.leading, .trailing], 45)
                 .padding([.top, .bottom], 8)
         }
         .padding()

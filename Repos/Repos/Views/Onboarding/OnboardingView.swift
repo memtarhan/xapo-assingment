@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @State private var isPortrait = false
     @State var shouldNavigateToHome = false
 
     var body: some View {
@@ -15,30 +16,82 @@ struct OnboardingView: View {
             Color("PrimaryBackgroundColor")
                 .ignoresSafeArea()
 
-            AdaptiveStack {
-                Spacer()
-                Image("logo")
-
+            if isPortrait {
                 VStack {
-                    Text("Welcome to Xapo")
-                        .largeTitleStyle()
-                    Text("iOS App for Xapo\nThis is a very fun app to use. Enjoy it!")
-                        .headlineStyle()
-                }
-                .foregroundColor(.white)
+                    Spacer()
+                    Image("logo")
 
-                Spacer()
+                    VStack {
+                        Text("Welcome to Xapo")
+                            .largeTitleStyle()
+                        Text("iOS App for Xapo\nThis is a very fun app to use. Enjoy it!")
+                            .headlineStyle()
+                    }
+                    .foregroundColor(.white)
 
-                VStack {
-                    MainButton(title: "Enter the App", shouldNavigateToHome: $shouldNavigateToHome)
-                    Text("Terms and Privacy")
-                        .linkStyle()
-                        .foregroundColor(.white)
+                    Spacer()
+
+                    VStack {
+                        MainButton(title: "Enter the App", shouldNavigateToHome: $shouldNavigateToHome)
+                        TermsAndPrivacyView()
+                            .padding()
+                    }
+                    .padding()
                 }
                 .padding()
+                .fullScreenCover(isPresented: $shouldNavigateToHome, content: ReposView.init)
+
+            } else {
+                HStack(alignment: .center) {
+                    Spacer()
+                    VStack {
+                        Image("logo")
+
+                        VStack {
+                            Text("Welcome to Xapo")
+                                .largeTitleStyle()
+                            Text("iOS App for Xapo\nThis is a very fun app to use. Enjoy it!")
+                                .headlineStyle()
+                        }
+                        .foregroundColor(.white)
+                    }
+
+                    Spacer()
+
+                    VStack {
+                        MainButton(title: "Enter the App", shouldNavigateToHome: $shouldNavigateToHome)
+                        TermsAndPrivacyView()
+                            .padding()
+                    }
+                    .padding()
+                }
+                .padding()
+                .fullScreenCover(isPresented: $shouldNavigateToHome, content: ReposView.init)
             }
-            .fullScreenCover(isPresented: $shouldNavigateToHome, content: ReposView.init)
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+            guard let scene = UIApplication.shared.windows.first?.windowScene else { return }
+            self.isPortrait = scene.interfaceOrientation.isPortrait
+        }
+    }
+}
+
+// TODO: This could be improved, move URLs to a common place
+struct TermsAndPrivacyView: View {
+    var body: some View {
+        HStack {
+            Link(destination: URL(string: "https://apple.com")!) {
+                Text("Privacy Policy")
+                    .underline()
+            }
+            Text("and")
+            Link(destination: URL(string: "https://apple.com")!) {
+                Text("Terms of Use")
+                    .underline()
+            }
+        }
+        .foregroundColor(.white)
+        .font(.subheadline)
     }
 }
 
