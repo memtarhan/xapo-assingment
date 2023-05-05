@@ -21,20 +21,20 @@ class ReposModel: ObservableObject {
         service = ReposServiceImplemented()
     }
 
-    func refresh() {
+    func refresh(_ filter: TrendingFilter) {
         repos.removeAll()
         currentPage = 0
-        load()
+        load(filter)
     }
 
-    func load() {
+    func load(_ filter: TrendingFilter) {
         isLoading = true
 
         currentPage += 1
 
         Task {
             do {
-                let items = try await service.fetchRepos(atPage: currentPage)
+                let items = try await service.fetchRepos(atPage: currentPage, filter: filter)
                 repos.append(contentsOf: createDisplayModels(outOfItems: items))
 
                 isLoading = false

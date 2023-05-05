@@ -9,6 +9,7 @@ import Foundation
 @testable import Repos
 
 class StubReposService: ReposService {
+    
     // TODO: We can get mocking url, staging, etc.
     private let baseURL = "https://api.github.com/search/repositories"
 
@@ -20,7 +21,7 @@ class StubReposService: ReposService {
         return "created%3A%3E\(date!.inQueryFormat)"
     }()
 
-    func fetchRepos(atPage page: Int) async throws -> [RepoResponse] {
+    func fetchRepos(atPage page: Int, filter: TrendingFilter) async throws -> [RepoResponse] {
         guard let url = URL(string: "\(baseURL)?q=\(dateQuery)&sort=stars&order=desc&page=\(page)") else {
             throw HTTPError.invalidURL
         }

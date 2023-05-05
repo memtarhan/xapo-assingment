@@ -7,6 +7,35 @@
 
 import Foundation
 
+enum TrendingFilter: String, CaseIterable, Hashable {
+    case daily
+    case weekly
+    case monthly
+    case yearly
+
+    var calendarComponent: Calendar.Component {
+        switch self {
+        case .daily:
+            return .day
+        case .weekly:
+            return .day
+        case .monthly:
+            return .month
+        case .yearly:
+            return .year
+        }
+    }
+
+    var componentValue: Int {
+        switch self {
+        case .daily, .monthly, .yearly:
+            return -1
+        case .weekly:
+            return -7
+        }
+    }
+}
+
 struct RepoDisplayModel: Identifiable, Equatable {
     let id: Int
     let details: RepoDetailsDisplayModel

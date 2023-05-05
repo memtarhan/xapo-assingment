@@ -20,6 +20,6 @@ final class ReposServiceTests: XCTestCase {
     }
 
     func testRepoResponseDecoding() async throws {
-        _ = try await service.fetchRepos(atPage: 1)
+        _ = try await service.fetchRepos(atPage: 1, filter: .monthly)
     }
 }
