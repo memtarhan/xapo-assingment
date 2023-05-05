@@ -23,18 +23,22 @@ struct RepoDetailSubview: View {
         if #available(iOS 15, *) {
             List {
                 Section("Owner") {
-                    HStack {
-                        AsyncImage(url: URL(string: repo.owner.avatarUrl)) { image in
-                            image.resizable()
-                        } placeholder: {
-                            Color.accentColor
-                        }
-                        .frame(width: 45, height: 45)
-                        .clipShape(Circle())
+                    NavigationLink {
+                        WebContainerView(view: WebView(), url: repo.owner.profileURL, title: repo.owner.username)
+                    } label: {
+                        HStack {
+                            AsyncImage(url: URL(string: repo.owner.avatarUrl)) { image in
+                                image.resizable()
+                            } placeholder: {
+                                Color.accentColor
+                            }
+                            .frame(width: 45, height: 45)
+                            .clipShape(Circle())
 
-                        Link(repo.owner.username, destination: repo.owner.profileURL)
-                            .font(.headline)
-                            .foregroundColor(.blue)
+                            Text(repo.owner.username)
+                                .font(.headline)
+                                .foregroundColor(.primary)
+                        }
                     }
                 }
                 Section("Stats") {
