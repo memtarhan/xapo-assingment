@@ -12,33 +12,40 @@ struct ReposView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(model.repos) { repo in
-                    NavigationLink {
-                        RepoDetailView(repo: .constant(repo))
+            if let errorMessage = model.errorMessage {
+                Text(errorMessage)
+                    .font(.title.bold())
+                    .padding()
 
-                    } label: {
-                        RepoRow(model: .constant(repo))
-                            .padding()
-//                            .cardStyle()
+            } else {
+                List {
+                    ForEach(model.repos) { repo in
+                        NavigationLink {
+                            RepoDetailView(repo: .constant(repo))
+
+                        } label: {
+                            RepoRow(model: .constant(repo))
+                                .padding()
+                            //                            .cardStyle()
+                        }
+                        .onAppear {
+                            if repo == model.repos.last {
+                                model.load()
+                            }
+                        }
                     }
-                    .onAppear {
-                        if repo == model.repos.last {
-                            model.load()
+                    if model.isLoading {
+                        HStack {
+                            Text("Loading...")
+                            ProgressView()
+                                .foregroundColor(.accentColor)
+                            Spacer()
                         }
                     }
                 }
-                if model.isLoading {
-                    HStack {
-                        Text("Loading...")
-                        ProgressView()
-                            .foregroundColor(.accentColor)
-                        Spacer()
-                    }
-                }
+                .listStyle(.plain)
+                .navigationTitle("Trending Repos")
             }
-            .listStyle(.plain)
-            .navigationTitle("Trending Repos")
         }
         .onAppear {
             model.load()

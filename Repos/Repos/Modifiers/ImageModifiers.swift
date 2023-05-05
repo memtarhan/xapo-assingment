@@ -1,5 +1,5 @@
 //
-//  Image+.swift
+//  ImageModifiers.swift
 //  Repos
 //
 //  Created by Mehmet Tarhan on 05/05/2023.
