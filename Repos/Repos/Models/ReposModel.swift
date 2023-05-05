@@ -44,13 +44,21 @@ class ReposModel: ObservableObject {
                 let (data, response) = try await URLSession.shared.data(for: request)
                 print(data.prettyJSON)
 
-                let result = try decoder.decode(Response.self, from: data)
+                let result = try decoder.decode(ReposResponse.self, from: data)
                 let newItems = result.items.map { RepoDisplayModel(id: $0.id,
-                                                                   title: $0.name,
+                                                                   name: $0.name,
+                                                                   fullName: $0.fullName,
+                                                                   url: URL(string: $0.htmlUrl)!,
+                                                                   description: $0.description,
                                                                    stars: "\($0.stargazersCount)",
                                                                    watchers: "\($0.watchersCount)",
                                                                    forks: "\($0.forksCount)",
-                                                                   createdAt: $0.createdAt.displayable)
+                                                                   createdAt: $0.createdAt.displayable,
+                                                                   updatedAt: $0.updatedAt.displayable,
+                                                                   pushedAt: $0.pushedAt.displayable,
+                                                                   owner: RepoOwnerDisplayModel(avatarUrl: $0.owner.avatarUrl,
+                                                                                                username: $0.owner.login,
+                                                                                                profileURL: URL(string: "https://github.com/\($0.owner.login)")!))
                 }
                 repos.append(contentsOf: newItems)
 
@@ -75,32 +83,70 @@ extension Data {
     }
 }
 
-struct Response: Decodable {
-    let items: [ItemResponse]
+struct ReposResponse: Decodable {
+    let items: [RepoResponse]
 }
 
-struct ItemResponse: Decodable {
+struct RepoResponse: Decodable {
     let id: Int
     let name: String
+    let fullName: String
+    let description: String?
+    let htmlUrl: String
     let stargazersCount: Int
     let watchersCount: Int
     let forksCount: Int
     let createdAt: Date
+    let updatedAt: Date
+    let pushedAt: Date
+    let owner: RepoOwnerResponse
+}
+
+struct RepoOwnerResponse: Decodable {
+    let avatarUrl: String
+    let login: String
 }
 
 struct RepoDisplayModel: Identifiable, Equatable {
     let id: Int
-    let title: String
+    let name: String
+    let fullName: String
+    let url: URL
+    let description: String?
     let stars: String
     let watchers: String
     let forks: String
     let createdAt: String
+    let updatedAt: String
+    let pushedAt: String
+    let owner: RepoOwnerDisplayModel
 
     static func == (lhs: RepoDisplayModel, rhs: RepoDisplayModel) -> Bool {
         return lhs.id == rhs.id
     }
 
-    static var sample = RepoDisplayModel(id: 1000000, title: "Sample Repo", stars: "4.5k", watchers: "1.2k", forks: "500", createdAt: "2023-05-05")
+    static let sample = RepoDisplayModel(id: 1000000,
+                                         name: "Sample",
+                                         fullName: "Sample Repo",
+                                         url: URL(string: "https://github.com/memtarhan/ios-lab")!,
+                                         description: "This is just a sample",
+                                         stars: "4.5k",
+                                         watchers: "1.2k",
+                                         forks: "500",
+                                         createdAt: Date().displayable,
+                                         updatedAt: Date().displayable,
+                                         pushedAt: Date().displayable,
+                                         owner: RepoOwnerDisplayModel.sample)
+}
+
+struct RepoOwnerDisplayModel {
+    let avatarUrl: String
+    let username: String
+    let profileURL: URL
+
+    static let sample = RepoOwnerDisplayModel(avatarUrl: "https://avatars.githubusercontent.com/u/32220126?v=4",
+                                              username: "memtarhan",
+                                              profileURL: URL(string: "https://github.com/memtarhan")!)
 }
 
 extension Date {

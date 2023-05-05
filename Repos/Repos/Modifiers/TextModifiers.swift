@@ -34,7 +34,7 @@ struct Headline: ViewModifier {
 
 // TODO: Add link navigation
 
-struct Link: ViewModifier {
+struct LinkView: ViewModifier {
     func body(content: Content) -> some View {
         content
             .multilineTextAlignment(.center)
@@ -55,6 +55,6 @@ extension View {
     }
 
     func linkStyle() -> some View {
-        modifier(Link())
+        modifier(LinkView())
     }
 }

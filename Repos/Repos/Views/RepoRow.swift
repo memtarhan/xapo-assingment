@@ -19,7 +19,7 @@ struct RepoRow: View {
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Color.accentColor.opacity(0.7))
                         .frame(width: 24, height: 30)
-                    Text(model.title)
+                    Text(model.name)
                         .foregroundColor(.primary)
 //                    Spacer()
                 }
