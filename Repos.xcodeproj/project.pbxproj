@@ -34,6 +34,7 @@
 		433800A32A05260B004F0DC0 /* StatsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800A22A05260B004F0DC0 /* StatsSection.swift */; };
 		433800A52A05263B004F0DC0 /* DetailsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800A42A05263B004F0DC0 /* DetailsSection.swift */; };
 		433800A72A052676004F0DC0 /* DescriptionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433800A62A052676004F0DC0 /* DescriptionSection.swift */; };
+		434A69752A08FFDD00C3B034 /* UIDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A69742A08FFDD00C3B034 /* UIDevice+.swift */; };
 		436335C82A042D71001119FE /* TextModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436335C72A042D71001119FE /* TextModifiers.swift */; };
 		436335CA2A043EDC001119FE /* ReposView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436335C92A043EDC001119FE /* ReposView.swift */; };
 		436335CD2A04481B001119FE /* ReposModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436335CC2A04481B001119FE /* ReposModel.swift */; };
@@ -94,6 +95,7 @@
 		433800A22A05260B004F0DC0 /* StatsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSection.swift; sourceTree = "<group>"; };
 		433800A42A05263B004F0DC0 /* DetailsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSection.swift; sourceTree = "<group>"; };
 		433800A62A052676004F0DC0 /* DescriptionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionSection.swift; sourceTree = "<group>"; };
+		434A69742A08FFDD00C3B034 /* UIDevice+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+.swift"; sourceTree = "<group>"; };
 		436335C72A042D71001119FE /* TextModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifiers.swift; sourceTree = "<group>"; };
 		436335C92A043EDC001119FE /* ReposView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposView.swift; sourceTree = "<group>"; };
 		436335CC2A04481B001119FE /* ReposModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposModel.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				43041F452A0532B2000D1F87 /* Data+.swift */,
 				43041F472A0532C4000D1F87 /* Date+.swift */,
 				43041F502A054822000D1F87 /* Int+.swift */,
+				434A69742A08FFDD00C3B034 /* UIDevice+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				43041F4D2A053357000D1F87 /* HTTPError.swift in Sources */,
 				433800A12A0525A3004F0DC0 /* OwnerSection.swift in Sources */,
 				43041F4B2A0532E9000D1F87 /* ReposService.swift in Sources */,
+				434A69752A08FFDD00C3B034 /* UIDevice+.swift in Sources */,
 				43041F4F2A053546000D1F87 /* HTTPWrapper.swift in Sources */,
 				433800912A05155D004F0DC0 /* WebViewController.swift in Sources */,
 				436335C82A042D71001119FE /* TextModifiers.swift in Sources */,

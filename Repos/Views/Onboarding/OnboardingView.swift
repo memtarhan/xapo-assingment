@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @State private var isPortrait = false
+    @State private var isPortrait = false // TODO: This can be moved to an Observable or EnvironmentObject for all views
     @State var shouldNavigateToHome = false
 
     var body: some View {
@@ -69,9 +69,11 @@ struct OnboardingView: View {
                 .fullScreenCover(isPresented: $shouldNavigateToHome, content: ReposView.init)
             }
         }
+        .onAppear {
+            self.isPortrait = UIDevice.current.isPortrait
+        }
         .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
-            guard let scene = UIApplication.shared.windows.first?.windowScene else { return }
-            self.isPortrait = scene.interfaceOrientation.isPortrait
+            self.isPortrait = UIDevice.current.isPortrait
         }
     }
 }
