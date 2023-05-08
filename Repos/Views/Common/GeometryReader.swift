@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct GeometryParameters {
+    /// Calculates and returns a dynamic width and height for current orientation
+    /// - Parameter size: Frame of current view
+    /// - Returns: A dynamic width and height for current orientation
     static func getFeaturedCardFrame(size: CGSize) -> (width: CGFloat, height: CGFloat) {
         let width = size.width
         let height = size.height

@@ -13,6 +13,7 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
+            // TODO: This can be moved to Color extension
             Color("PrimaryBackgroundColor")
                 .ignoresSafeArea()
 
@@ -21,6 +22,7 @@ struct OnboardingView: View {
                     Spacer()
                     Image("logo")
 
+                    // TODO: These Strings should be in a commong place, localized strings,
                     VStack {
                         Text("Welcome to Xapo")
                             .largeTitleStyle()
@@ -32,7 +34,12 @@ struct OnboardingView: View {
                     Spacer()
 
                     VStack {
-                        MainButton(title: "Enter the App", shouldNavigateToHome: $shouldNavigateToHome)
+                        Button("Enter the App") {
+                            shouldNavigateToHome = true
+                            LocalStorage.shared.signedIn = true
+                        }
+                        .buttonStyle(MainButtonStyle())
+
                         TermsAndPrivacyView()
                             .padding()
                     }
@@ -59,7 +66,10 @@ struct OnboardingView: View {
                     Spacer()
 
                     VStack {
-                        MainButton(title: "Enter the App", shouldNavigateToHome: $shouldNavigateToHome)
+                        Button("Enter the App") {
+                            shouldNavigateToHome = true
+                            LocalStorage.shared.signedIn = true
+                        }
                         TermsAndPrivacyView()
                             .padding()
                     }

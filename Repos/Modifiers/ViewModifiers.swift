@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: This modifier is to apply card style to any view in SwiftUI
+
 // MARK: - Card
 
 struct Card: ViewModifier {

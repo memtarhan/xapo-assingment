@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: Main Button implementation, could be used anywhere in the app. (Used in Onboarding)
+
 struct MainButton: View {
     var title: String
     @Binding var shouldNavigateToHome: Bool
@@ -41,6 +43,21 @@ private struct MainButtonCore: View {
     }
 }
 
+struct TestButton<Content: View>: View {
+    let action: () -> Void
+    let label: () -> Content
+
+    init(action: @escaping () -> Void, @ViewBuilder label: @escaping () -> Content) {
+        self.action = action
+        self.label = label
+    }
+
+    init(action: @escaping () -> Void, title: String) where Content == Text {
+        self.init(action: action, label: { Text(title) })
+    }
+
+    var body: some View { label().onTapGesture { action() } }
+}
 
 struct MainButton_Previews: PreviewProvider {
     static var previews: some View {

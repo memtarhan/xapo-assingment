@@ -8,6 +8,8 @@
 import Foundation
 
 extension Data {
+    
+    /// A pretty JSON string of data
     var prettyJSON: NSString? {
         guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
               let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted, .withoutEscapingSlashes]),

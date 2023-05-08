@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReposView: View {
-    @ObservedObject var model = ReposModel()
+    @StateObject var model = ReposModel()
     @State var filter = TrendingFilter.daily
 
     var body: some View {
@@ -71,7 +71,8 @@ struct ReposList: View {
                                 RepoDetailView(repo: repo)
                             } label: {
                                 FeaturedView(repo: repo)
-                                    .frame(width: GeometryParameters.getFeaturedCardFrame(size: geometry.size).width)
+//                                    .frame(width: GeometryParameters.getFeaturedCardFrame(size: geometry.size).width,
+//                                           height: GeometryParameters.getFeaturedCardFrame(size: geometry.size).height)
                             }
                         }
                     }

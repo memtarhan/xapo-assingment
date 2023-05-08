@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - This is an adaptive Stack implementation, could be used without determining device orientation
+
 struct AdaptiveStack<Content: View>: View {
     @Environment(\.horizontalSizeClass) var sizeClass
     let horizontalAlignment: HorizontalAlignment

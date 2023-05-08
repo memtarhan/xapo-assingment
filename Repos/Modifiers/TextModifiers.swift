@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+// MARK: These modifiers are example of creating a Theme in SwiftUI,
+
+// MARK: With custom modifiers you can create views, texts, images for the whole app
+
 // MARK: - Large Title
 
 struct LargeTitle: ViewModifier {

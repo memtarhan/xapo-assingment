@@ -8,6 +8,12 @@
 import Foundation
 
 protocol ReposService: HTTPWrapper {
+    
+    /// Fetches a list of repos at given page with given filter
+    /// - Parameters:
+    ///   - page: The current page repos are at
+    ///   - filter: The filter to fetch repos, i.e daily, weekly
+    /// - Returns: A list of RepoResponse
     func fetchRepos(atPage page: Int, filter: TrendingFilter) async throws -> [RepoResponse]
 }
 
