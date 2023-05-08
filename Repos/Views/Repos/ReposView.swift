@@ -10,6 +10,8 @@ import SwiftUI
 struct ReposView: View {
     @StateObject var model = ReposModel()
     @State var filter = TrendingFilter.daily
+    @State var shouldShowSignOut = false
+    @State var shouldNavigateToOnboarding = false
 
     var body: some View {
         NavigationView {
@@ -24,9 +26,20 @@ struct ReposView: View {
                         .refreshable {
                             model.refresh(filter)
                         }
+                        .toolbar {
+                            ToolbarItemGroup(placement: .navigationBarLeading) {
+                                Button {
+                                    shouldShowSignOut.toggle()
+                                } label: {
+                                    Image(systemName: "person.badge.key")
+                                }
+                            }
+                        }
+                        .fullScreenCover(isPresented: $shouldNavigateToOnboarding, content: OnboardingView.init)
 
                 } else {
                     // TODO: Add pull to refresh for iOS 14, refreshable is available for iOS15 and later
+                    // TODO: Refresh feature is handled by a button on navigation bar
                     ReposList(model: .constant(model), filter: $filter)
                         .toolbar {
                             ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -36,9 +49,27 @@ struct ReposView: View {
                                     Image(systemName: "arrow.clockwise")
                                 }
                             }
+                            ToolbarItemGroup(placement: .navigationBarLeading) {
+                                Button {
+                                    shouldShowSignOut.toggle()
+                                } label: {
+                                    Image(systemName: "person.badge.key")
+                                }
+                            }
                         }
+                        .fullScreenCover(isPresented: $shouldNavigateToOnboarding, content: OnboardingView.init)
                 }
             }
+        }
+        .alert(isPresented: $shouldShowSignOut) {
+            Alert(
+                title: Text("Are you sure you want to sign out?"),
+                primaryButton: .destructive(Text("Sign Out")) {
+                    LocalStorage.shared.signedIn = false
+                    shouldNavigateToOnboarding = true
+                },
+                secondaryButton: .cancel()
+            )
         }
         .onAppear {
             model.load(filter)
